@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Google Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+	<!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,45xUdHPiFHQ7xbKh19G45saF1raB2ot5pag8p1Hnk4yrfXRJZskr8TMbFpVfC5tDk8eQQg63TqkW9gKhwagx6HePTaK2yXb=swap"
+		rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body {
+			font-family: 'Poppins', sans-serif;
+
+		}
+	</style>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-dark bg-dark lighten-4"
+		style="border-bottom-left-radius: 30px !important;border-bottom-right-radius: 30px !important;">
+		<div class="container">
+			<p class="text-white pt-3 pb-0 mb-0" style="font-size: 10px;">Oral Screening by
+				<span class="navbar-brand mt-n2 mx-1" style="font-weight: 800;font-size: 20px;"> Logy.<span
+						style="color: #4398D1;">AI</span> </span>
+			</p>
+
+		</div>
+	</nav>
+	<div class="container ">
+
+		<div id="msform2" class="mt-4 mb-0 w-25 mx-auto">
+			<ul id="progressbar" class="pl-0 mb-0 mt-0">
+				<li id="dot1" class="active">Basic Details</li>
+				<li id="dot2" >Step 1</li>
+				<li id="dot3" >Step 2</li>
+				<li id="dot4" >Step 3</li>
+				<li id="dot5" >Step 4</li>
+
+			</ul>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<style>
+		#msform2 {
+			text-align: center;
+			position: relative;
+		}
+
+		#msform2 fieldset:not(:first-of-type) {
+			display: none;
+		}
+
+		#msform2 .action-button {
+			color: rgb(0, 0, 0);
+			cursor: pointer;
+		}
+
+		#msform {
+			text-align: center;
+			position: relative;
+		}
+
+		#msform fieldset:not(:first-of-type) {
+			display: none;
+		}
+
+		#msform .action-button {
+			color: rgb(0, 0, 0);
+			cursor: pointer;
+		}
+
+		.fs-title {
+			font-size: 15px;
+			text-transform: uppercase;
+			color: #2C3E50;
+			margin-bottom: 10px;
+		}
+
+		.fs-subtitle {
+			font-weight: normal;
+			font-size: 13px;
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+		#progressbar {
+			margin-bottom: 30px;
+			overflow: hidden;
+			counter-reset: step;
+		}
+
+		#progressbar li {
+			list-style-type: none;
+			color: rgb(255, 255, 255);
+			text-transform: uppercase;
+			font-size: 9px;
+			width: 20%;
+			float: left;
+			position: relative;
+		}
+
+		#progressbar li:before {
+			content: counter(step);
+			counter-increment: step;
+			width: 10px;
+			line-height: 10px;
+			display: block;
+			font-size: 10px;
+			color: rgb(224, 224, 224);
+			background: rgb(224, 224, 224);
+			border-radius: 50%;
+			margin: 0 auto 5px auto;
+		}
+
+		#progressbar li:after {
+			display: none;
+			content: '';
+			width: 100%;
+			height: 2px;
+			background: rgb(0, 0, 0);
+			position: absolute;
+			top: 9px;
+			z-index: -1;
+		}
+
+		#progressbar li:first-child:after {
+			content: none;
+		}
+
+		#progressbar li.active:before,
+		#progressbar li.active:after {
+			background: #000000;
+			color: rgb(0, 0, 0);
+		}
+	</style>
+
+	<form action="http://localhost:7000/api/" class="container" id="msform" method="POST" enctype="multipart/form-data">
+
+		<fieldset id="slide1" class="mt-0">
+			<a class="disabled bg-dark px-3 py-2 rounded text-white" href="">Basic Details</a>
+			<div class="row mx-3">
+				<div class="md-form col-9 px-1">
+					<input name="name" style="font-size: 25px;border-bottom-width: 4px !important;" type="text"
+						id="fname" class="form-control">
+					<label for="numberExample">name</label>
+				</div>
+				<div class="md-form col-3 px-1">
+					<input name="age" style="font-size: 25px;border-bottom-width: 4px !important;" type="number"
+						id="age" class="form-control">
+					<label for="numberExample">age</label>
+				</div>
+			</div>
+
+
+			<div class="mt-5 container text-center">
+
+				<div class="row w-md-50 mx-auto pt-5"
+					style="background-image: url(GENDER.svg);background-repeat: no-repeat;background-size: contain;">
+
+
+					<div onclick="next_slide(1);assignValue('gender','Male')" class="col-6">
+						<div class="md-form  ">
+							<a class="bg-dark text-white px-5 py-2" style="border-radius: 10px;font-size: 4vh;"
+								href=""><i class="fas fa-mars"></i></a>
+							<p class="mt-3">male</p>
+							<p style="font-size: 4vh;"><i class="far fa-check-circle"></i></p>
+						</div>
+					</div>
+					<div onclick="next_slide(1);assignValue('gender','Female')" class="col-6">
+						<div class="md-form ">
+							<a class="bg-dark text-white px-5 py-2" style="border-radius: 10px;font-size: 4vh;"
+								href=""><i class="fas fa-venus"></i></a>
+							<p class="mt-3">female</p>
+							<p style="font-size: 4vh;"><i class="far fa-check-circle"></i></p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- <input type="button" name="next" class="mt-3 next action-button px-4 py-1 rounded" value="NEXT" style="border: none;font-weight: 700;"/> -->
+		</fieldset>
+
+
+		<fieldset style="display: none;" id="slide2">
+			<div class="col-md-6 bg-dark  mx-auto mt-3"
+				style="border-radius: 15px;box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.35)!important;">
+				<h6 class="text-white pt-4">Tobacco/Smoking ?</h6>
+				<div class="row py-3 mx-0">
+					<div onclick="next_slide(2);assignValue('tobacco_habits','Yes')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_smoking.png" alt="">
+						<h6 class="text-white mt-4">Yes</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-light"></i></p>
+					</div>
+					<div onclick="next_slide(2);assignValue('tobacco_habits','No')" class="col">
+
+						<img class="col w-100 py-0" src="options/app_no-smoking.png" alt="">
+						<h6 class="text-white mt-4">No</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-light"></i></p>
+					</div>
+
+				</div>
+			</div>
+			<!-- <input type="button" name="next" class="mt-3 next action-button px-4 py-1 rounded" value="NEXT" style="border: none;font-weight: 700;"/> -->
+
+		</fieldset>
+
+		<fieldset style="display: none;" id="slide3">
+			<div class="col-md-6 bg-dark  mx-auto mt-3"
+				style="border-radius: 15px;box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.35)!important;">
+				<h6 class="text-white pt-4">Brushing Habit</h6>
+				<p class="text-white " style="font-weight: 800;">(DAILY)</p>
+				<div class="row py-3 mx-0">
+					<div onclick="next_slide(3);assignValue('brushing_habits','Once')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_brush1.png" alt="">
+						<h6 class="text-white mt-4">ONCE</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+					<div onclick="next_slide(3);assignValue('brushing_habits','Twice')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_brush2.png" alt="">
+						<h6 class="text-white mt-4">TWICE</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+					<div onclick="next_slide(3);assignValue('brushing_habits','More than twice')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_brush3.png" alt="">
+						<h6 class="text-white mt-4">MORE</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+				</div>
+			</div>
+			<!-- <input type="button" name="next" class="mt-3 next action-button px-4 py-1 rounded" value="NEXT" style="border: none;font-weight: 700;"/> -->
+		</fieldset>
+		<fieldset style="display: none;" id="slide4">
+			<div class="col-md-6 bg-dark  mx-auto mt-3"
+				style="border-radius: 15px;box-shadow: 0px 0px 75px rgba(0, 0, 0, 0.35)!important;">
+				<h6 class="text-white pt-4">Dental Visits ?</h6>
+				<p class="text-white " style="font-weight: 800;">(YEARLY)</p>
+				<div class="row py-3 mx-0">
+					<div onclick="next_slide(4);assignValue('dental_visit','Every 3 months')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_oi3.png" alt="">
+						<h6 class="text-white mt-4">EVERY 3 MONTHS</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+					<div onclick="next_slide(4);assignValue('dental_visit','Every 6 months')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_oi6.png" alt="">
+						<h6 class="text-white mt-4">EVERY 6 MONTHS</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+				</div>
+				<div class="row py-3 mx-0">
+					<div onclick="next_slide(4);assignValue('dental_visit','Once in a year')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_oiy.png" alt="">
+						<h6 class="text-white mt-4">ONCE</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+					<div onclick="next_slide(4);assignValue('dental_visit','As per need')" class="col">
+
+						<img class="col w-100  py-0  " src="options/app_apn.png" alt="">
+						<h6 class="text-white mt-4">AS PER NEED</h6>
+						<p style="font-size: 4vh;"><i class="far fa-check-circle text-white"></i></p>
+					</div>
+				</div>
+			</div>
+			<!-- <input type="button" name="next" class="mt-3 next action-button px-4 py-1 rounded" value="NEXT" style="border: none;font-weight: 700;"/> -->
+			<br>
+			<br>
+		</fieldset>
+		<fieldset style="display: none;" id="slide5">
+
+
+
+			<div>
+				<a class="btnreload mb-3">
+					Please provide us a photo of your teeth. Instructions to click the photo
+				</a>
+				<div class="myText mt-3">
+					<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel"
+						data-interval=7000>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								Hold the phone like this.
+								<img style="border-radius: 20px !important;" class="d-block w-100"
+									src="images/position.jpeg" alt="First slide">
+							</div>
+							<div class="carousel-item">
+								The photo should look like this.
+								<img style="border-radius: 20px !important;" class="d-block w-100"
+									src="images/image.jpeg" alt="Second slide">
+							</div>
+
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<style>
+				#btnreload {
+					width: 120px;
+					height: 50px;
+					border: none;
+					background: #fff;
+				}
+			</style>
+			<script>
+				$(".btnreload").click(function () {
+					var lable = $(".btnreload").text().trim();
+
+					if (lable == "Instructions to click the photo") {
+						$(".btnreload").text("Please provide us a photo of your teeth. Show the instructions again");
+						$(".myText").hide();
+					} else {
+						$(".btnreload").text("Please provide us a photo of your teeth. Instructions to click the photo");
+						$(".myText").show();
+						
+					}
+				});
+				setTimeout(function () {
+					$(".myText").hide();
+					$(".btnreload").text("Please provide us a photo of your teeth. \nShow the instructions again");
+					console.log("Open")
+					document.getElementById('captureimage2').click()
+				}, 15000);
+
+			</script>
+
+
+			<style>
+				#labelx {
+					margin-bottom: 1em;
+					display: block;
+					padding: 15px 0;
+					text-align: center;
+					background: #363636;
+					color: white;
+					border-radius: 20px;
+				}
+
+				#blah {
+					width: 100%;
+				}
+			</style>
+
+
+
+			<input id="secret_key" hidden class="input" name="secret_key" style="display:none" value="1234" />
+			<input id="gender" hidden class="input" type="text" name="gender" placeholder="Gender" required
+				value="Female" />
+			<input id="tobacco_habits" hidden class="input" type="text" name="tobacco_habits"
+				placeholder="Any tobacco/smoking habits?" required value="No" />
+			<input id="brushing_habits" hidden class="input" type="text" name="brushing_habits"
+				placeholder="How many time do you brush your teeths in a day?" required value="Once" />
+			<input id="dental_visit" hidden class="input" type="text" name="dental_visit"
+				placeholder="Number of dental visits per year?" required value="As per need " />
+
+			<label class="mx-2 my-5" id="labelx" for="captureimage2">Click Here to Open Camera</label>
+			<input name="image" type='file' capture="camera" accept="image/*" onchange="readURL(this);"
+				id="captureimage2" caption style="display:none" />
+			<img style="border-radius: 20px !important;" id="blah" src="images/Rectangle 1.png" alt="your image" capture
+				onchange="document.getElementById('submit_form').click(); console.log('clicked!')" />
+			<!-- <input id="submit_form" type="submit"  class="mt-3 next action-button px-4 py-1 rounded"  style="border: none;font-weight: 700;"/> -->
+
+
+
+			
+
+
+
+		</fieldset>
+
+		<fieldset style="display:none" align="center" id="loader">
+			<div id="countdown"></div>
+			<progress value="0" max="10" id="progressBar"></progress>
+			<script>
+				function loader() {
+					var total_time = 60;
+					var timeleft = total_time;
+					document.getElementById("progressBar").max = timeleft
+					var downloadTimer = setInterval(function () {
+						if (timeleft <= 0) {
+							clearInterval(downloadTimer);
+							document.getElementById("countdown").innerHTML = "Finished";
+
+						} else {
+							document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+							document.getElementById("progressBar").value = total_time - timeleft
+						}
+						timeleft -= 1;
+					}, 1000);
+				}
+			</script>
+		</fieldset>
+		<a style="display:none" id="final_pdf" href="">Download Report</a>
+
+
+	</form>
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function (e) {
+					$('#blah')
+						.attr('src', e.target.result);
+				};
+				reader.readAsDataURL(input.files[0]);
+				document.getElementById("slide5").style.display="none"
+				document.getElementById("loader").style.display="block"
+				send_request()
+			}
+		}
+	</script>
+	<script>
+		function send_request() {
+			form = document.getElementById("msform");
+			formData = new FormData(form)
+			console.log(formData)
+			var request = new XMLHttpRequest();
+			request.responseType = 'blob';
+			request.open("POST", "http://localhost:7000/api/");
+			request.onload = function () {
+				// Do something with the retrieved data ( found in xmlhttp.response )
+				blob = request.response
+				document.getElementById("final_pdf").href = (window.URL.createObjectURL(new Blob([blob], { type: blob.type })));
+				document.getElementById("final_pdf").style.display = "block"
+				document.getElementById("loader").style.display = "none"
+			};
+			request.send(formData);
+			// document.getElementById("form_content").style.display = "none"
+			document.getElementById("loader").style.display = "block"
+			loader()
+		}
+	</script>
+
+	<script>
+
+		var current_fs, next_fs;
+
+		$(".next").click(function () {
+
+
+			current_fs = $(this).parent();
+			next_fs = $(this).parent().next();
+
+			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+			next_fs.show();
+			current_fs.animate({ opacity: 0 }, {
+				step: function () {
+					current_fs.css({
+						'position': 'absolute',
+
+					});
+					next_fs.css({ 'opacity': 1 });
+				},
+				complete: function () {
+					current_fs.hide();
+
+				},
+			});
+		});
+
+
+		function next_slide(index) {
+			event.preventDefault()
+			next_slide_number = index + 1
+			console.log("slide" + next_slide_number)
+			document.getElementById("slide" + index).style.display = "none"
+			document.getElementById("slide" + next_slide_number).style.display = "block"
+			document.getElementById("dot" + index).className = "" 
+			document.getElementById("dot" + next_slide_number).className = "active" 
+		}
+
+		function assignValue(id, value) {
+			document.getElementById(id).value = value
+		}
+
+
+	</script>
+</body>
+
+</html>
